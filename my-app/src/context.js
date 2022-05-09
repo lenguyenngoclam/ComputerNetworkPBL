@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useCallback } from "react";
 import { useState, useReducer } from "react";
 import reducer from "./reducer";
+import foodData from "./assets/food-data";
 
 const AppContext = React.createContext();
 
@@ -25,10 +26,26 @@ function AppProvider({ children }) {
     const increaseAmount = (id) => dispatch({ type: "INCREASE", payload: id });
     const decreaseAmount = (id) => dispatch({ type: "DECREASE", payload: id });
     const addDrinkToCart = (id) => fetchDrink(id);
+    const addFoodToCart = (id) => fetchFood(id);
 
     const [isLoading, setIsLoading] = useState(false);
     const [searchTerms, setSearchTerms] = useState('a');
     const [cocktails, setCocktails] = useState([]);
+
+    const fetchFood = async (id) => {
+        setIsLoading(true);
+        const cartItem = cartState.cart ? cartState.cart.find((item) => item.id === id, null) : null;
+        if (!cartItem) {
+            let newFood = foodData.find((item) => item.id === id);
+            newFood = { ...newFood, amount: 1 };
+            if (cartState.state)
+                dispatch({ type: "ADD_FOOD", payload: { food: newFood, cartEmpty: true } });
+            else
+                dispatch({ type: "ADD_FOOD", payload: { food: newFood, cartEmpty: false } });
+        } else
+            dispatch({ type: "INCREASE", payload: id });
+        setIsLoading(false);
+    }
 
     const fetchDrink = async (id) => {
         setIsLoading(true);
@@ -130,7 +147,8 @@ function AppProvider({ children }) {
                 isLoading,
                 clearCart, removeItem,
                 increaseAmount, decreaseAmount,
-                addDrinkToCart
+                addDrinkToCart,
+                foodData, addFoodToCart
             }}>
             {children}
         </AppContext.Provider>
