@@ -1,1 +1,1 @@
-React Application for House Renting
+React Application for Ordering
