@@ -9,6 +9,7 @@ import Home from "./pages/home";
 import About from "./pages/about";
 import Error from "./pages/error";
 import Cart from "./pages/cart";
+import FoodMenu from "./pages/foods";
 
 function App() {
     return (
@@ -16,7 +17,8 @@ function App() {
             <Navbar />
             <Routes>
                 <Route index path='/' element={<Home />} />
-                <Route path='about' element={<About />} />
+                <Route path='/about' element={<About />} />
+                <Route path="/foods" element={<FoodMenu />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path='cocktail/:id' element={<SingleCocktail />} />
                 <Route path='*' element={<Error />} />

@@ -44,6 +44,11 @@ function reducer(state, action) {
                 return { ...state, cart: [action.payload.cocktail] };
             else
                 return { ...state, cart: [...state.cart, action.payload.cocktail] };
+        case "ADD_FOOD":
+            if (action.payload.emptyCart)
+                return { ...state, cart: [action.payload.food] };
+            else
+                return { ...state, cart: [...state.cart, action.payload.food] }; 
         default:
             throw new Error('no matching action type');
     };

@@ -16,6 +16,9 @@ function Navbar() {
                         <Link to="/">Home</Link>
                     </li>
                     <li>
+                        <Link to="/foods">Food Menu</Link>
+                    </li>
+                    <li>
                         <Link to="/about">About</Link>
                     </li>
                     <li>
