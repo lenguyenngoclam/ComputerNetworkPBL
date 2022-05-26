@@ -535,6 +535,19 @@ Cart
   color: var(--clr-red-dark);
   border-color: var(--clr-red-light);
 }
+.buy-btn {
+  background: transparent;
+  padding: 0.5rem 1rem;
+  color: var(--clr-green-light);
+  border: 1px solid var(--clr-green-dark);
+  margin-top: 2.25rem;
+  border-radius: var(--radius);
+}
+.buy-btn:hover {
+  background: var(--clr-green-light);
+  color: var(--clr-green-dark);
+  border-color: var(--clr-green-light);
+}
 /*
 =============== 
 Cart Item

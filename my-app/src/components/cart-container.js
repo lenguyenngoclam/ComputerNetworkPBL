@@ -36,6 +36,9 @@ function CartContainer() {
                 Total <span>${total}</span>
               </h4>
             </div>
+            <button className='btn buy-btn' onClick={clearCart}>
+              Buy
+            </button><br></br>
             <button className='btn clear-btn' onClick={clearCart}>
               Clear cart
             </button>
